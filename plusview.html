@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>plusview</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<style></style>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="plusview.js"></script>
+		<link href="plusview.css" media="all" rel="stylesheet" type="text/css" />
+		<script>
+			/** populates ".plusview ul" tags with sample data */
+			function initSampleData() {
+				var urlList = [];
+				var parts = "0123456789abcdefghijklmnopqrstuvwxyz";
+				$('.plusview ul').each(function(index, el) {
+					var ul = $(el);
+					for (var i=0; i<parts.length; i++) {
+						var imgUrl = "/bebe_models/x120/" + parts.charAt(i) + ".jpg";
+						var targetUrl = "/bebe_models/x400/" + parts.charAt(i) + ".jpg";
+						
+						var li = $('<li></li>').appendTo(ul);
+						var anchor = $('<a></a>').attr('data-type', 'image')
+							.attr('href', targetUrl).appendTo(li);
+						var img = $('<img/>').attr('src', imgUrl).attr('border', 0).appendTo(anchor);
+					}
+				});
+			}
+		
+			$(function() {
+				initSampleData();
+				
+				$('#plusview1').plusview({
+					height: 400
+				});
+				$('#plusview2').plusview({
+					height: 400,
+					hide: "hide",
+					show: "show",
+					scrollIntoView: false
+				});
+				$('#plusview3').plusview({
+					height: 400,
+					showItem: 3,
+					duration: 5000,
+					wrap: true
+				});
+			});
+		</script>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				background: #666;
+			}
+			.bodyContainer {
+				max-width: 800px;
+				margin: 0 auto;
+				background: #fff;
+				padding: 20px;
+			}
+			
+			.plusview {
+				overflow: hidden;
+				-moz-user-select:'-moz-none';
+				-moz-user-select:none;
+				-o-user-select:none;
+				-khtml-user-select:none;
+				-webkit-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
+			}
+			.plusview ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.plusview ul li {
+				display: inline;
+			}
+			.plusview ul li img {
+				height: 105px;
+			}
+
+
+
+		</style>
+	</head>
+	<body>
+		<div class="bodyContainer">
+			<h1>plusview</h1>
+			<p>plusview is a jquery plugin that provides a slideshow style effect for list items similar to the google play store screenshots</p>
+
+
+			<h2>without plusview</h2>
+			<p>This block is just to act as a sample for the structure of the expected markup and does not have the plusview plugin applied.</p>
+			<pre>&lt;div class="plusview"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;a href="/bebe_models/x400/0.jpg" data-type="image"&gt;
+                &lt;img src="/bebe_models/x400/0.jpg" border="0"/&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &hellip;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+			<div class="plusview">
+				<ul>
+				</ul>
+			</div>
+
+
+			<h2>with plusview</h2>
+			<p>The same markup with plusview applied. The plugin only uses nodes with the data-type attribute set to "image". Others may be added later.</p>
+			<pre>$('#plusview1').plusview({
+    height: 400
+});</pre>
+			<div id="plusview1" class="plusview">
+				<ul>
+				</ul>
+			</div>
+
+
+			<h2>without animation</h2>
+			<p>This example is for those that hate all animations.</p>
+			<pre>$('#plusview2').plusview({
+    height: 400,
+    hide: "hide",
+    show: "show",
+    scrollIntoView: false
+});</pre>
+			<div id="plusview2" class="plusview">
+				<ul>
+				</ul>
+			</div>
+
+
+			<h2>auto mode</h2>
+			<p>The plugin can also be configured to automatically show an item by index, show it for 5 seconds, and wrap around to the first one when going past the last one.</p>
+			<pre>$('#plusview3').plusview({
+    height: 400,
+    showItem: 3,
+    duration: 5000,
+    wrap: true
+});</pre>
+			<div id="plusview3" class="plusview">
+				<ul>
+				</ul>
+			</div>
+
+
+			
+			<h2>source code</h2>
+			<ul>
+				<li><a href="plusview.js">javascript</a></li>
+				<li><a href="plusview.css">css</a></li>
+				<li><a href="plusview_arrows.png">image</a></li>
+			</ul>
+		</div>
+	</body>
+</html>
