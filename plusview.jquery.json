@@ -1,12 +1,12 @@
 {
 	"name": "plusview",
-	"version": "2013.12.19",
+	"version": "1.0",
 	"title": "plusview - an inline image viewer similar to the one on google play store",
 	"author": "miguel de anda",
 	"licenses": [
 		"type": "MIT",
 		"url": "http://opensource.org/licenses/MIT"
-	]
+	],
 	"dependencies": {
 		"jquery": ">1.0.0"
 	},
