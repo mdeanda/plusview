@@ -49,7 +49,8 @@
 				showItem: null,
 				duration: null,
 				wrap: false,
-				scrollIntoView: true
+				scrollIntoView: true,
+				buttonHeight: 50
 			}, options);
 			settings.el = $(el);
 			settings.renderFunc = null;
@@ -142,16 +143,21 @@
 		if (!this.largeView) {
 			//prepare on first call
 			var self = this;
-			var borderHeight = 2;
+			var borderHeight = 1;
 			this.largeView = $('<div class="PlusView-largeBg"></div>')
 				.click(function() {
 					self.showNormalView();
 				})
 				.appendTo(this.settings.el)
 				.hide();
+				
+			var btnPaddingTop = (this.settings.height - this.settings.buttonHeight) / 2;
+			var btnHeight = this.settings.height - btnPaddingTop - borderHeight * 2;
 			this.rightArrow = $('<a class="PlusView-button PlusView-rightArrow"></a>')
 				.attr('href', '#')
-				.css('height', this.settings.height - borderHeight)
+				.css('height', btnHeight)
+				.css('padding-top', btnPaddingTop)
+				.html('<span></span>')
 				.click(function() {
 					self.showNext();
 					return false;
@@ -159,7 +165,9 @@
 				.appendTo(this.largeView);
 			this.leftArrow = $('<a class="PlusView-button PlusView-leftArrow"></a>')
 				.attr('href', '#')
-				.css('height', this.settings.height - borderHeight)
+				.css('height', btnHeight)
+				.css('padding-top', btnPaddingTop)
+				.html('<span></span>')
 				.click(function() {
 					self.showPrev();
 					return false;
