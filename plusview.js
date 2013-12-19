@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * PlusView 2013-12-18 (December 18, 2013)
- * 
- * PlusView is a jQuery plugin that tries to replicate the Google (tm) play 
+ * PlusView 2013-12-19 (December 19, 2013)
+ *
+ * PlusView is a jQuery plugin that tries to replicate the Google (tm) play
  * store screenshot viewer. It's meant to be simple to setup with a very simple
  * html structure expected.
  */
@@ -37,7 +37,7 @@
 	 * duration - when in large view, automatically go to next item
 	 * 		after the given duration
 	 * wrap - makes next/prev wrap around forever
-	 * scrollIntoView - scrolls main element into view when switching to 
+	 * scrollIntoView - scrolls main element into view when switching to
 	 * 		large view
 	 */
 	$.fn.plusview = function(options) {
@@ -150,7 +150,7 @@
 				})
 				.appendTo(this.settings.el)
 				.hide();
-				
+
 			var btnPaddingTop = (this.settings.height - this.settings.buttonHeight) / 2;
 			var btnHeight = this.settings.height - btnPaddingTop - borderHeight * 2;
 			this.rightArrow = $('<a class="PlusView-button PlusView-rightArrow"></a>')
