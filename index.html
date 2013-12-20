@@ -18,7 +18,7 @@
 					for (var i=0; i<parts.length; i++) {
 						var imgUrl = "/bebe_models/x120/" + parts.charAt(i) + ".jpg";
 						var targetUrl = "/bebe_models/x400/" + parts.charAt(i) + ".jpg";
-						
+
 						var li = $('<li></li>').appendTo(ul);
 						var anchor = $('<a></a>').attr('data-type', 'image')
 							.attr('href', targetUrl).appendTo(li);
@@ -26,10 +26,10 @@
 					}
 				});
 			}
-		
+
 			$(function() {
 				initSampleData();
-				
+
 				$('#plusview1').plusview({
 				});
 				$('#plusview2').plusview({
@@ -58,7 +58,7 @@
 				background: #fff;
 				padding: 20px;
 			}
-			
+
 			.plusview {
 				overflow: hidden;
 				-moz-user-select:'-moz-none';
@@ -146,11 +146,12 @@
 			</div>
 
 
-			
+
 			<h2>source code</h2>
 			<ul>
 				<li>The latest version is always available on <a href="https://github.com/mdeanda/plusview">github</a></li>
-				
+				<li>Also view it on <a href="http://plugins.jquery.com/plusview/">jquery.com</a></li>
+
 				<li><a href="plusview.js">javascript</a></li>
 				<li><a href="plusview.css">css</a></li>
 				<li><a href="plusview_arrows.png">image</a></li>
