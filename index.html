@@ -52,6 +52,12 @@
 				margin: 0;
 				background: #666;
 			}
+			pre {
+				background: #e0e0e0;
+				font-size: 10px;
+				padding: 20px;
+				word-wrap: break-word;
+			}
 			.bodyContainer {
 				max-width: 800px;
 				margin: 0 auto;
@@ -91,8 +97,8 @@
 			<p>plusview is a jquery plugin that provides a slideshow style effect for list items similar to the google play store screenshots</p>
 
 
-			<h2>without plusview</h2>
-			<p>This block is just to act as a sample for the structure of the expected markup and does not have the plusview plugin applied.</p>
+			<h2>markup</h2>
+			<p>first you'll need to get your markup looking like this:</p>
 			<pre>&lt;div class="plusview"&gt;
     &lt;ul&gt;
         &lt;li&gt;
@@ -103,14 +109,31 @@
         &hellip;
     &lt;/ul&gt;
 &lt;/div&gt;</pre>
-			<div class="plusview">
-				<ul>
-				</ul>
-			</div>
-
+			<p>... and some css kind of like this:</p>
+			<pre>.plusview {
+	overflow: hidden;
+	-moz-user-select:'-moz-none';
+	-moz-user-select:none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+.plusview ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.plusview ul li {
+	display: inline;
+}
+.plusview ul li img {
+	height: 105px;
+}</pre>
 
 			<h2>with plusview</h2>
-			<p>The same markup with plusview applied. The plugin only uses nodes with the data-type attribute set to "image". Others may be added later.</p>
+			<p>then we apply plusview. the plugin only uses nodes with the data-type attribute set to "image". others may be added later.</p>
 			<pre>$('#plusview1').plusview();</pre>
 			<div id="plusview1" class="plusview">
 				<ul>
@@ -119,7 +142,7 @@
 
 
 			<h2>without animation</h2>
-			<p>This example is for those that hate all animations.</p>
+			<p>this example is for those who hate all animations. we've also set a custom height here as well.</p>
 			<pre>$('#plusview2').plusview({
     height: 400,
     hide: "hide",
@@ -133,7 +156,7 @@
 
 
 			<h2>auto mode</h2>
-			<p>The plugin can also be configured to automatically show an item by index, show it for 5 seconds, and wrap around to the first one when going past the last one.</p>
+			<p>the plugin can also be configured to automatically show an item by index, show it for 5 seconds, and wrap around to the first one when going past the last one.</p>
 			<pre>$('#plusview3').plusview({
     height: 200,
     showItem: 3,
@@ -146,6 +169,18 @@
 			</div>
 
 
+			<h2>the api</h2>
+			<p>you can pass in an options object to configure your plusview.</p>
+			<ul>
+				<li>height [300] - set the height of the plusview container. it'll use this to help center the left/right icons as well.</li>
+				<li>hide ["slideUp"] - the hide function to use, typically "hide" or "slideUp"</li>
+				<li>show ["slideDown"] - the show function to use, typically "show" or "slideDown"</li>
+				<li>wrap [false] - enable wrapping around when hitting next/prev</li>
+				<li>scrollIntoView [true] - when switching into the large view, position the element at the top of the page</li>
+				<li>showItem [null] - can be set to an index of the item to show automatically</li>
+				<li>duration [0] - when in large view, automatically cycle through the items at the set interval</li>
+				<li>buttonHeight [50] - if changing the next/prev buttons, this height is used to center buttons</li>
+			</ul>
 
 			<h2>source code</h2>
 			<ul>
