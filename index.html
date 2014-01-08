@@ -42,11 +42,15 @@
 					height: 200,
 					showItem: 3,
 					duration: 5000,
-					wrap: true
+					wrap: true,
+					onChange: function(el) {
+						$('#plusview3_label').text( el.attr('href') );
+					}
 				});
 			});
 		</script>
 		<style>
+			/* these styles are only for demo and not required, see plusview.css for suggested styles */
 			body {
 				padding: 0;
 				margin: 0;
@@ -63,6 +67,13 @@
 				margin: 0 auto;
 				background: #fff;
 				padding: 20px;
+			}
+			#plusview3_label {
+				border: 1px solid #f0f0f0;
+				line-height: 18px;
+				text-align: center;
+				font-size: 11px;
+				margin-top: 4px;
 			}
 
 			.plusview {
@@ -156,16 +167,20 @@
 
 
 			<h2>auto mode</h2>
-			<p>the plugin can also be configured to automatically show an item by index, show it for 5 seconds, and wrap around to the first one when going past the last one.</p>
+			<p>the plugin can also be configured to automatically show an item by index, show it for 5 seconds, wrap around to the first one when going past the last one and calling a function after each change to update a label.</p>
 			<pre>$('#plusview3').plusview({
     height: 200,
     showItem: 3,
     duration: 5000,
-    wrap: true
+    wrap: true,
+    onChange: function(el) {...}
 });</pre>
 			<div id="plusview3" class="plusview">
 				<ul>
 				</ul>
+			</div>
+			<div id="plusview3_label">
+
 			</div>
 
 
@@ -180,6 +195,11 @@
 				<li>showItem [null] - can be set to an index of the item to show automatically</li>
 				<li>duration [0] - when in large view, automatically cycle through the items at the set interval</li>
 				<li>buttonHeight [50] - if changing the next/prev buttons, this height is used to center buttons</li>
+				<li>onChange [null] - a callback function that gets called whenever an item is shown. parameters are:
+					<ul>
+						<li>el - the anchor element used for large view as a jquery object</li>
+					</ul>
+				</li>
 			</ul>
 
 			<h2>source code</h2>

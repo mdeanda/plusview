@@ -50,7 +50,8 @@
 				duration: null,
 				wrap: false,
 				scrollIntoView: true,
-				buttonHeight: 50
+				buttonHeight: 50,
+				onChange: function() {}
 			}, options);
 			settings.el = $(el);
 			settings.renderFunc = null;
@@ -132,6 +133,9 @@
 		this.normalView[this.settings.hide]();
 		this.showLargeView();
 		this.settings.renderFunc(this.contentArea, el);
+		if (this.settings.onChange!=null) {
+			this.settings.onChange(el);
+		}
 	};
 	/* general catchall to hide pop */
 	PlusView.prototype.showNormalView = function() {
